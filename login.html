@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 | 판다마켓</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/auth.css" />
+    <script src="./js/auth.js" defer></script>
+  </head>
+  <body class="auth-page">
+    <main class="auth-card" aria-labelledby="login-title">
+      <a class="auth-logo" href="./index.html" aria-label="판다마켓 홈">
+        <img src="./images/panda-logo.svg" alt="" />
+        <span>판다마켓</span>
+      </a>
+      <h1 class="visually-hidden" id="login-title">로그인</h1>
+
+      <form class="auth-form" data-auth-form="login" novalidate>
+        <div class="field" data-field="email">
+          <label for="login-email">이메일</label>
+          <input id="login-email" name="email" type="email" placeholder="이메일을 입력해 주세요" autocomplete="email" />
+          <p class="field-error" aria-live="polite"></p>
+        </div>
+        <div class="field" data-field="password">
+          <label for="login-password">비밀번호</label>
+          <div class="password-field">
+            <input id="login-password" name="password" type="password" placeholder="비밀번호를 입력해 주세요" autocomplete="current-password" />
+            <button class="password-toggle" type="button" aria-label="비밀번호 표시" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.7"/><path class="eye-slash" d="M4 4 20 20"/></svg>
+            </button>
+          </div>
+          <p class="field-error" aria-live="polite"></p>
+        </div>
+        <button class="submit-button" type="submit" disabled>로그인</button>
+      </form>
+
+      <section class="social-login" aria-label="간편 로그인">
+        <div class="social-login-inner">
+          <span>간편 로그인하기</span>
+          <div class="social-buttons" aria-label="간편 로그인 제공자">
+            <a class="social-button" href="https://www.google.com/" aria-label="Google"><img src="./images/google-login.png" alt="" /></a>
+            <a class="social-button" href="https://www.kakaocorp.com/page/" aria-label="카카오"><img src="./images/kakao-login.png" alt="" /></a>
+          </div>
+        </div>
+      </section>
+
+      <p class="auth-switch">판다마켓이 처음이신가요? <a href="./signup.html">회원가입</a></p>
+    </main>
+  </body>
+</html>
+
+
+
+
+
+
+
+

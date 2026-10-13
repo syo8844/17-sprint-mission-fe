@@ -1,0 +1,12 @@
+/index.html  /  301!
+/login.html  /login  301!
+/items.html  /items  301!
+/privacy.html  /privacy  301!
+/faq.html  /faq  301!
+/login    /login.html    200
+/items    /items.html    200
+/privacy  /privacy.html  200
+/faq      /faq.html      200
+
+/signup.html  /signup  301!
+/signup       /signup.html  200

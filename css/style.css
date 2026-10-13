@@ -1,0 +1,281 @@
+/* 로고에 사용하는 외부 폰트를 등록합니다. */
+@font-face {
+  font-family: "ROKAF Sans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-2@1.0/ROKAFSansBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 색상과 공통 콘텐츠 너비/좌우 여백을 변수로 관리합니다. */
+:root {
+  --blue: #3692ff;
+  --ink: #1f2937;
+  --page-max: 95rem;
+  --page-gutter: 12.5rem;
+}
+
+/* rem 단위가 브라우저 기본 글꼴 크기를 따르도록 설정합니다. */
+html { font-size: 100%; }
+body {
+  color: var(--ink);
+  background: #fff;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+/* 스크롤 중에도 화면 위에 남는 전역 내비게이션입니다. */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 4.375rem;
+  background: #fff;
+  border-bottom: 0.0625rem solid #f2f4f7;
+}
+/* 내비게이션 내용을 최대 너비로 가운데 정렬하고 양끝에 배치합니다. */
+.nav-container {
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--page-max));
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { display: inline-flex; align-items: center; gap: 0.5rem; }
+.logo-icon { width: 2rem; height: 2rem; }
+.logo-text {
+  color: var(--blue);
+  font-family: "ROKAF Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* 파란색 공통 버튼 스타일입니다. */
+.btn-primary {
+  min-width: 8rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: var(--blue);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+.btn-primary:hover { background: #2677d9; }
+.btn-lg { width: 100%; min-width: 0; border-radius: 50rem; }
+
+/* 첫 화면 히어로 영역: 배경색은 전체 너비, 콘텐츠는 중앙 최대 너비입니다. */
+.hero-section {
+  position: relative;
+  height: 33.75rem;
+  overflow: hidden;
+  background: #cfe5ff;
+}
+/* 제목/버튼과 메인 이미지를 한 줄로 배치합니다. */
+.hero-container {
+  position: absolute;
+  top: 12.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(69.375rem, calc(100% - (var(--page-gutter) * 2)));
+  height: 21.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4375rem;
+}
+.hero-text {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 22.3125rem;
+  width: 22.3125rem;
+  height: 16.25rem;
+  padding-bottom: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.hero-text h1 {
+  margin: 0;
+  color: #374151;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+}
+.hero-image {
+  flex: 0 1 46.625rem;
+  min-width: 0;
+  align-self: flex-end;
+}
+.hero-image img { width: 100%; height: auto; }
+
+/* 기능 소개 섹션의 위아래 여백입니다. */
+.feature-section { padding: 7.5rem 0; }
+.feature-container {
+  width: min(calc(100% - (var(--page-gutter) * 2)), 61.25rem);
+  min-height: 27.5rem;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.75rem;
+}
+/* 두 번째 기능 소개는 이미지와 텍스트의 좌우 순서를 바꿉니다. */
+.feature-section.reverse .feature-container { flex-direction: row-reverse; }
+.feature-section.reverse .feature-text { text-align: right; }
+.feature-image { flex: 0 1 37.5rem; min-width: 0; }
+.feature-image img { width: 100%; height: auto; }
+.feature-text { flex: 0 0 18.75rem; }
+.badge {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: var(--blue);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.feature-text h2 {
+  margin: 0 0 1rem;
+  color: #374151;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+}
+.feature-text p { color: #4b5563; font-size: 1.125rem; line-height: 1.5; }
+
+/* 페이지 하단의 하늘색 강조 배너입니다. */
+.bottom-banner {
+  position: relative;
+  height: 33.75rem;
+  margin-top: 13.6875rem;
+  overflow: hidden;
+  background: #cfe5ff;
+}
+/* 배너 문구와 이미지를 고정된 최대 너비 안에서 정렬합니다. */
+.banner-container {
+  position: absolute;
+  top: 8.9375rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(69.375rem, calc(100% - (var(--page-gutter) * 2)));
+  height: 24.8125rem;
+  display: flex;
+  align-items: center;
+  gap: 4.3125rem;
+}
+.banner-container h2 {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 18.4375rem;
+  width: 18.4375rem;
+  height: 10.75rem;
+  margin: 0;
+  padding-bottom: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  color: #374151;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.04em;
+}
+.banner-image {
+  flex: 0 1 46.625rem;
+  min-width: 0;
+  height: 100%;
+}
+.banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+/* 어두운 바탕의 페이지 푸터입니다. */
+.footer {
+  height: 10rem;
+  padding: 2rem 0;
+  color: #9ca3af;
+  background: #111827;
+}
+/* 푸터를 왼쪽 저작권, 가운데 링크, 오른쪽 SNS의 한 줄 3열로 배치합니다. */
+.footer-container {
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--page-max));
+  height: 100%;
+  min-height: 0;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
+  align-items: start;
+  column-gap: 0.625rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+.copyright { white-space: nowrap; text-align: left; }
+.footer-links {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-self: center;
+  gap: 2rem;
+  white-space: nowrap;
+}
+.footer-links a { color: #e5e7eb; }
+.footer-links a:hover { color: #fff; }
+.social-links {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-self: end;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+.social-links a { display: block; transition: opacity 160ms ease; }
+.social-links a:hover { opacity: 0.7; }
+.social-links img { width: 1.25rem; height: 1.25rem; }
+/* 화면이 좁아지면 주요 제목 크기를 단계적으로 조정합니다. */
+@media (max-width: 119.999rem) {
+  .hero-text h1 { font-size: 2rem; }
+  .banner-container h2 { font-size: 1.875rem; }
+}
+
+/* 중간 화면에서 기능 영역의 간격과 텍스트 너비를 줄입니다. */
+@media (max-width: 80rem) {
+  .feature-container { gap: 2.5rem; }
+  .feature-text { flex-basis: 17rem; }
+  /* 중간 화면에서도 푸터 요소 사이의 간격을 유지합니다. */
+.footer-container { column-gap: 0.625rem; }
+}
+
+/* 더 좁은 PC 화면에서 기능 소개의 간격과 제목 크기를 추가 조정합니다. */
+@media (max-width: 64rem) {
+  .hero-text h1 { font-size: 2rem; }
+  .feature-container { gap: 2rem; }
+  .feature-text { flex-basis: 15rem; }
+  .feature-text h2 { font-size: 1.75rem; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
