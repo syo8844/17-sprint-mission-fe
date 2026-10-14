@@ -9,8 +9,8 @@
 
 /* 색상과 공통 콘텐츠 너비/좌우 여백을 변수로 관리합니다. */
 :root {
-  --blue: #3692ff;
-  --ink: #1f2937;
+  --blue: var(--color-primary);
+  --ink: var(--color-text);
   --page-max: 95rem;
   --page-gutter: 12.5rem;
 }
@@ -19,7 +19,7 @@
 html { font-size: 100%; }
 body {
   color: var(--ink);
-  background: #fff;
+  background: var(--color-white);
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
 }
@@ -30,8 +30,8 @@ body {
   top: 0;
   z-index: 10;
   height: 4.375rem;
-  background: #fff;
-  border-bottom: 0.0625rem solid #f2f4f7;
+  background: var(--color-white);
+  border-bottom: 0.0625rem solid var(--color-border);
 }
 /* 내비게이션 내용을 최대 너비로 가운데 정렬하고 양끝에 배치합니다. */
 .nav-container {
@@ -62,7 +62,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--color-white);
   background: var(--blue);
   font-size: 1rem;
   font-weight: 600;
@@ -70,7 +70,7 @@ body {
   cursor: pointer;
   transition: background-color 160ms ease;
 }
-.btn-primary:hover { background: #2677d9; }
+.btn-primary:hover { background: var(--color-primary-hover); }
 .btn-lg { width: 100%; min-width: 0; border-radius: 50rem; }
 
 /* 첫 화면 히어로 영역: 배경색은 전체 너비, 콘텐츠는 중앙 최대 너비입니다. */
@@ -78,7 +78,7 @@ body {
   position: relative;
   height: 33.75rem;
   overflow: hidden;
-  background: #cfe5ff;
+  background: var(--color-hero);
 }
 /* 제목/버튼과 메인 이미지를 한 줄로 배치합니다. */
 .hero-container {
@@ -105,7 +105,7 @@ body {
 }
 .hero-text h1 {
   margin: 0;
-  color: #374151;
+  color: var(--color-text-secondary);
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.35;
@@ -144,13 +144,13 @@ body {
 }
 .feature-text h2 {
   margin: 0 0 1rem;
-  color: #374151;
+  color: var(--color-text-secondary);
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: -0.04em;
 }
-.feature-text p { color: #4b5563; font-size: 1.125rem; line-height: 1.5; }
+.feature-text p { color: var(--color-text-muted); font-size: 1.125rem; line-height: 1.5; }
 
 /* 페이지 하단의 하늘색 강조 배너입니다. */
 .bottom-banner {
@@ -158,7 +158,7 @@ body {
   height: 33.75rem;
   margin-top: 13.6875rem;
   overflow: hidden;
-  background: #cfe5ff;
+  background: var(--color-hero);
 }
 /* 배너 문구와 이미지를 고정된 최대 너비 안에서 정렬합니다. */
 .banner-container {
@@ -183,7 +183,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-  color: #374151;
+  color: var(--color-text-secondary);
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 1.4;
@@ -205,8 +205,8 @@ body {
 .footer {
   height: 10rem;
   padding: 2rem 0;
-  color: #9ca3af;
-  background: #111827;
+  color: var(--color-text-subtle);
+  background: var(--color-footer);
 }
 /* 푸터를 왼쪽 저작권, 가운데 링크, 오른쪽 SNS의 한 줄 3열로 배치합니다. */
 .footer-container {
@@ -232,8 +232,8 @@ body {
   gap: 2rem;
   white-space: nowrap;
 }
-.footer-links a { color: #e5e7eb; }
-.footer-links a:hover { color: #fff; }
+.footer-links a { color: var(--color-footer-text); }
+.footer-links a:hover { color: var(--color-white); }
 .social-links {
   display: flex;
   flex-wrap: nowrap;
