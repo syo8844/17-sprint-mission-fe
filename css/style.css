@@ -1,27 +1,25 @@
-/* 로고에 사용하는 외부 폰트를 등록합니다. */
-@font-face {
-  font-family: "ROKAF Sans";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-2@1.0/ROKAFSansBold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* 색상과 공통 콘텐츠 너비/좌우 여백을 변수로 관리합니다. */
-:root {
-  --blue: var(--color-primary);
-  --ink: var(--color-text);
-  --page-max: 95rem;
-  --page-gutter: 12.5rem;
-}
-
-/* rem 단위가 브라우저 기본 글꼴 크기를 따르도록 설정합니다. */
-html { font-size: 100%; }
 body {
-  color: var(--ink);
+  color: var(--color-text);
   background: var(--color-white);
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.5;
+}
+
+/* 제목 태그의 가로 폭을 내용에 맞춰 불필요한 빈 공간을 없앱니다. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  width: fit-content;
+  max-width: 100%;
+  font-size: 2.5rem; /* 40px / 16 */
+}
+
+p {
+  height: 4rem; /* 64px / 16 */
+  font-size: 1.5rem; /* 24px / 16 */
 }
 
 /* 스크롤 중에도 화면 위에 남는 전역 내비게이션입니다. */
@@ -42,16 +40,41 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.logo { display: inline-flex; align-items: center; gap: 0.5rem; }
-.logo-icon { width: 2rem; height: 2rem; }
-.logo-text {
-  color: var(--blue);
-  font-family: "ROKAF Sans", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem; /* GNB 시안 기준 10px */
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
+.logo-icon {
+  width: 2.5rem;
+  height: 2.50875rem; /* 40.14px / 16 */
+  min-width: 2.5rem;
+  min-height: 2.50875rem;
+  flex-shrink: 0;
+}
+.logo-text {
+  height: 2.1875rem; /* 35px: 아이콘과 위아래 약 2.5px 여백 */
+  align-self: center;
+  /* 정렬 및 줄바꿈 방지 */
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  white-space: nowrap;
 
+  /* 폰트 관련 */
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.602rem; /* 약 25.63px / 16 */
+  line-height: 100%;
+  letter-spacing: 0;
+  color: var(--color-primary);
+  opacity: 1;
+  cursor: pointer;
+}
 /* 파란색 공통 버튼 스타일입니다. */
 .btn-primary {
   min-width: 8rem;
@@ -63,40 +86,43 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--color-white);
-  background: var(--blue);
-  font-size: 1rem;
+  background: var(--color-primary);
+  font-size: 1rem; /* 16px / 16 */
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: background-color 160ms ease;
 }
-.btn-primary:hover { background: var(--color-primary-hover); }
-.btn-lg { width: 100%; min-width: 0; border-radius: 50rem; }
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+}
+.btn-lg {
+  width: 100%;
+  min-width: 0;
+  border-radius: 50rem;
+}
 
 /* 첫 화면 히어로 영역: 배경색은 전체 너비, 콘텐츠는 중앙 최대 너비입니다. */
 .hero-section {
-  position: relative;
-  height: 33.75rem;
+  min-height: 33.75rem;
+  padding-top: 12.5rem;
   overflow: hidden;
   background: var(--color-hero);
 }
 /* 제목/버튼과 메인 이미지를 한 줄로 배치합니다. */
 .hero-container {
-  position: absolute;
-  top: 12.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(69.375rem, calc(100% - (var(--page-gutter) * 2)));
-  height: 21.25rem;
+  width: min(68.75rem, calc(100% - (var(--page-gutter) * 2)));
+  min-height: 21.25rem; /* 340px */
+  margin-inline: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.4375rem;
 }
 .hero-text {
   position: relative;
   z-index: 1;
-  flex: 0 0 22.3125rem;
-  width: 22.3125rem;
+  flex: 0 0 21.6875rem;
+  width: 21.6875rem;
   height: 16.25rem;
   padding-bottom: 3.75rem;
   display: flex;
@@ -104,9 +130,9 @@ body {
   gap: 2rem;
 }
 .hero-text h1 {
+  height: 7rem; /* 112px / 16, 브라우저 기본 글꼴 크기에 비례 */
   margin: 0;
   color: var(--color-text-secondary);
-  font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: -0.04em;
@@ -116,13 +142,24 @@ body {
   min-width: 0;
   align-self: flex-end;
 }
-.hero-image img { width: 100%; height: auto; }
+.hero-image img {
+  width: 100%;
+  height: auto;
+  min-width: 46.625rem;
+  min-height: 21.25rem;
+}
 
 /* 기능 소개 섹션의 위아래 여백입니다. */
-.feature-section { padding: 7.5rem 0; }
+.feature-section {
+  height: 45rem; /* 각 중간 섹션 720px */
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
 .feature-container {
-  width: min(calc(100% - (var(--page-gutter) * 2)), 61.25rem);
-  min-height: 27.5rem;
+  width: min(calc(100% - (var(--page-gutter) * 2)), 61.75rem);
+  height: 27.75rem; /* 988×444px 그룹 높이 */
+  min-height: 27.75rem;
   margin-inline: auto;
   display: flex;
   align-items: center;
@@ -130,61 +167,88 @@ body {
   gap: 3.75rem;
 }
 /* 두 번째 기능 소개는 이미지와 텍스트의 좌우 순서를 바꿉니다. */
-.feature-section.reverse .feature-container { flex-direction: row-reverse; }
-.feature-section.reverse .feature-text { text-align: right; }
-.feature-image { flex: 0 1 37.5rem; min-width: 0; }
-.feature-image img { width: 100%; height: auto; }
-.feature-text { flex: 0 0 18.75rem; }
+.feature-section.reverse .feature-container {
+  flex-direction: row-reverse;
+}
+.feature-section.reverse .feature-text {
+  text-align: right;
+}
+.feature-section.reverse .feature-text h2 {
+  margin-right: 0;
+  margin-left: auto;
+}
+.feature-section.reverse .badge {
+  margin-bottom: 0;
+}
+.feature-image {
+  flex: 0 1 37.5rem;
+  min-width: 0;
+}
+.feature-image img {
+  width: 100%;
+  height: auto;
+  min-width: 36.75rem; /* 원본 이미지 588px */
+  min-height: 27.75rem; /* 원본 이미지 444px */
+}
+.feature-text {
+  height: 14.875rem; /* 238px / 16 */
+  flex: 0 0 18.75rem;
+}
+.feature-register .feature-text {
+  width: 20.9375rem; /* 335px / 16 */
+  flex: 0 0 20.9375rem;
+}
+.feature-register .feature-text p {
+  font-size: 1.5rem; /* 24px / 16 */
+  white-space: nowrap;
+}
 .badge {
   display: inline-block;
   margin-bottom: 0.75rem;
-  color: var(--blue);
-  font-size: 1rem;
+  color: var(--color-primary);
+  font-size: 1.125rem; /* 18px / 16 */
   font-weight: 700;
 }
 .feature-text h2 {
+  height: 7rem; /* 112px / 16 */
   margin: 0 0 1rem;
   color: var(--color-text-secondary);
-  font-size: 2rem;
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: -0.04em;
 }
-.feature-text p { color: var(--color-text-muted); font-size: 1.125rem; line-height: 1.5; }
+.feature-text p {
+  color: var(--color-text-muted);
+  font-size: 1.5rem; /* 24px / 16 */
+  line-height: 1.5;
+}
 
 /* 페이지 하단의 하늘색 강조 배너입니다. */
 .bottom-banner {
-  position: relative;
-  height: 33.75rem;
+  min-height: 0;
   margin-top: 13.6875rem;
+  padding-bottom: 0;
+  padding-top: 8.9375rem;
   overflow: hidden;
   background: var(--color-hero);
 }
 /* 배너 문구와 이미지를 고정된 최대 너비 안에서 정렬합니다. */
 .banner-container {
-  position: absolute;
-  top: 8.9375rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(69.375rem, calc(100% - (var(--page-gutter) * 2)));
-  height: 24.8125rem;
+  width: min(68.75rem, calc(100% - (var(--page-gutter) * 2)));
+  min-height: 21.25rem; /* 340px 그룹 높이 */
+  margin-inline: auto;
   display: flex;
-  align-items: center;
-  gap: 4.3125rem;
+  align-items: flex-end;
+  gap: 0;
 }
 .banner-container h2 {
   position: relative;
   z-index: 1;
-  flex: 0 0 18.4375rem;
-  width: 18.4375rem;
-  height: 10.75rem;
+  flex: 0 0 auto;
+  height: 7rem; /* 112px / 16 */
   margin: 0;
   padding-bottom: 3.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
   color: var(--color-text-secondary);
-  font-size: 2.25rem;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: -0.04em;
@@ -197,16 +261,19 @@ body {
 .banner-image img {
   width: 100%;
   height: 100%;
+  min-width: 46.625rem;
+  min-height: 24.8125rem;
   object-fit: contain;
   object-position: bottom;
 }
 
 /* 어두운 바탕의 페이지 푸터입니다. */
 .footer {
-  height: 10rem;
-  padding: 2rem 0;
+  height: 4.25rem;
+  padding: 0;
   color: var(--color-text-subtle);
   background: var(--color-footer);
+  font-family: "Pretendard";
 }
 /* 푸터를 왼쪽 저작권, 가운데 링크, 오른쪽 SNS의 한 줄 3열로 배치합니다. */
 .footer-container {
@@ -216,24 +283,48 @@ body {
   margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
-  align-items: start;
+  align-items: center;
   column-gap: 0.625rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1;
   text-align: center;
 }
-.copyright { white-space: nowrap; text-align: left; }
+.copyright {
+  width: 7rem; /* 112px / 16 */
+  height: 1.25rem; /* 20px / 16 */
+  font-size: 0.75rem; /* 12px / 16: Text-xs */
+  line-height: 1.25rem;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: left;
+}
 .footer-links {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-self: center;
-  gap: 2rem;
+  gap: 1.875rem;
   white-space: nowrap;
 }
-.footer-links a { color: var(--color-footer-text); }
-.footer-links a:hover { color: var(--color-white); }
+.footer-links a {
+  width: 6.25rem; /* 100px */
+  height: 1.1875rem; /* 19px */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Pretendard-ExtraLight.ttf";
+  font-size: 1rem; /* 16px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625rem;
+  letter-spacing: 0;
+  color: var(--color-footer-text); /* #E5E7EB */
+  text-align: center;
+}
+.footer-links a:hover {
+  color: var(--color-white);
+}
 .social-links {
   display: flex;
   flex-wrap: nowrap;
@@ -242,40 +333,1171 @@ body {
   gap: 0.75rem;
   white-space: nowrap;
 }
-.social-links a { display: block; transition: opacity 160ms ease; }
-.social-links a:hover { opacity: 0.7; }
-.social-links img { width: 1.25rem; height: 1.25rem; }
-/* 화면이 좁아지면 주요 제목 크기를 단계적으로 조정합니다. */
-@media (max-width: 119.999rem) {
-  .hero-text h1 { font-size: 2rem; }
-  .banner-container h2 { font-size: 1.875rem; }
+.social-links a {
+  display: block;
+  transition: opacity 160ms ease;
 }
-
+.social-links a:hover {
+  opacity: 0.7;
+}
+.social-links img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
 /* 중간 화면에서 기능 영역의 간격과 텍스트 너비를 줄입니다. */
 @media (max-width: 80rem) {
-  .feature-container { gap: 2.5rem; }
-  .feature-text { flex-basis: 17rem; }
+  .feature-container {
+    gap: 2.5rem;
+  }
+  .feature-text {
+    flex-basis: 17rem;
+  }
   /* 중간 화면에서도 푸터 요소 사이의 간격을 유지합니다. */
-.footer-container { column-gap: 0.625rem; }
+  .footer-container {
+    column-gap: 0.625rem;
+  }
 }
 
-/* 더 좁은 PC 화면에서 기능 소개의 간격과 제목 크기를 추가 조정합니다. */
+/* 더 좁은 PC 화면에서 기능 소개의 간격을 추가 조정합니다. */
 @media (max-width: 64rem) {
-  .hero-text h1 { font-size: 2rem; }
-  .feature-container { gap: 2rem; }
-  .feature-text { flex-basis: 15rem; }
-  .feature-text h2 { font-size: 1.75rem; }
+  .feature-container {
+    gap: 2rem;
+  }
+  .feature-text {
+    flex-basis: 15rem;
+  }
 }
 
+/* 좁아지는 화면에서도 랜딩 페이지의 문구와 이미지를 겹치지 않게 세로로 배치합니다. */
+@media (max-width: 1199px) {
+  .hero-section {
+    min-height: 0;
+    padding: 4rem 0;
+  }
 
+  .hero-container {
+    width: min(calc(100% - 3rem), 68.75rem);
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
 
+  .hero-text {
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+    padding-bottom: 0;
+    gap: 1rem;
+  }
 
+  .hero-text h1 {
+    height: auto;
+  }
 
+  .hero-text .btn-lg {
+    width: max-content;
+    min-width: 9rem;
+  }
 
+  .hero-image {
+    width: 100%;
+    flex: 0 0 auto;
+  }
 
+  .hero-image img {
+    min-width: 0;
+    min-height: 0;
+  }
+}
 
+@media (max-width: 1199px) {
+  .feature-section {
+    height: auto;
+    padding: 4rem 0;
+  }
 
+  .feature-container,
+  .feature-section.reverse .feature-container {
+    width: min(calc(100% - 3rem), 61.75rem);
+    height: auto;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
 
+  .feature-section.reverse .feature-container {
+    flex-direction: column-reverse;
+  }
 
+  .feature-image {
+    width: 100%;
+    flex: 0 0 auto;
+  }
 
+  .feature-image img {
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .feature-text,
+  .feature-register .feature-text {
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .feature-text h2 {
+    height: auto;
+  }
+
+  .feature-text p,
+  .feature-register .feature-text p {
+    height: auto;
+    white-space: normal;
+  }
+
+  .bottom-banner {
+    min-height: 0;
+    padding: 4rem 0;
+  }
+
+  .banner-container {
+    width: min(calc(100% - 3rem), 68.75rem);
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .banner-container h2 {
+    height: auto;
+    padding-bottom: 0;
+  }
+
+  .banner-image {
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .banner-image img {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+/* 세로 배치 구간에서 이미지가 컨테이너 전체 폭으로 커지지 않도록 최대 폭을 둡니다. */
+@media (max-width: 1199px) {
+  .hero-text {
+    max-width: 21.6875rem;
+    align-self: flex-start;
+  }
+
+  .hero-image {
+    max-width: 46.625rem;
+    align-self: center;
+  }
+}
+
+@media (max-width: 1199px) {
+  .feature-image {
+    max-width: 36.75rem;
+    align-self: center;
+  }
+
+  .feature-text {
+    max-width: 18.75rem;
+    align-self: flex-start;
+  }
+
+  .feature-register .feature-text {
+    max-width: 20.9375rem;
+  }
+
+  .feature-section.reverse .feature-text {
+    align-self: flex-end;
+  }
+
+  .banner-container h2 {
+    max-width: 30rem;
+    align-self: flex-start;
+  }
+
+  .banner-image {
+    max-width: 46.625rem;
+    align-self: center;
+  }
+}
+/* 태블릿에서는 히어로 일러스트를 줄여 제목과 균형을 맞춥니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .hero-image {
+    max-width: 32rem;
+  }
+}
+
+/* Give the desktop hero title enough width to keep its explicit two-line copy. */
+@media (min-width: 1200px) {
+  .hero-container {
+    width: min(1152px, calc(100% - 48px));
+  }
+
+  .hero-text {
+    width: 405px;
+  }
+
+  .hero-text h1 {
+    width: 405px;
+    white-space: normal;
+  }
+
+  .hero-image {
+    left: 405px;
+  }
+}
+
+/* 모바일에서는 일러스트를 콘텐츠 폭에 맞춥니다. */
+@media (max-width: 743px) {
+  .hero-image {
+    max-width: 100%;
+  }
+}
+/* Tablet: 화면 가장자리 여백을 24px로 줄이고 각 이미지는 고정 폭을 사용합니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .nav-container,
+  .footer-container {
+    width: calc(100% - 3rem);
+  }
+
+  .hero-image {
+    width: 32rem;
+    max-width: 100%;
+  }
+
+  .feature-image {
+    width: 36.75rem;
+    max-width: 100%;
+  }
+
+  .banner-image {
+    width: 32rem;
+    max-width: 100%;
+  }
+}
+
+/* Mobile: 헤더는 좌우 16px, 이미지는 좌우 32px 여백을 유지합니다. */
+@media (min-width: 375px) and (max-width: 743px) {
+  .nav-container {
+    width: calc(100% - 2rem);
+  }
+
+  .hero-container,
+  .feature-container,
+  .feature-section.reverse .feature-container,
+  .banner-container {
+    width: calc(100% - 2rem);
+  }
+
+  .hero-image,
+  .feature-image,
+  .banner-image {
+    width: calc(100vw - 4rem);
+    max-width: none;
+    align-self: center;
+  }
+
+  .hero-image img,
+  .feature-image img,
+  .banner-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer {
+    height: auto;
+    min-height: 7rem;
+    padding: 1.5rem 0;
+  }
+
+  .footer-container {
+    position: relative;
+    width: min(calc(100% - 2rem), 21.4375rem);
+    height: 3.9375rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .footer-links {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    gap: 1.875rem;
+  }
+
+  .footer-links a {
+    width: auto;
+    height: auto;
+    font-family: "Pretendard-ExtraLight.ttf";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.625rem;
+    letter-spacing: 0;
+    color: var(--color-footer-text);
+    text-align: center;
+  }
+
+  .footer-links li:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 11.5rem;
+    left: 8.125rem;
+  }
+
+  .footer-links li:nth-child(2) a {
+    width: 100%;
+  }
+
+  .social-links {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    gap: 0.5rem;
+  }
+
+  .social-links img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .copyright {
+    grid-column: 1;
+    grid-row: 2;
+    width: auto;
+    height: auto;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+}
+
+/* PC(1200–1499px)에서는 히어로·배너와 기능 콘텐츠의 최대 폭을 각각 유지합니다. */
+@media (min-width: 1200px) and (max-width: 1499px) {
+  .hero-container,
+  .banner-container {
+    width: min(68.75rem, calc(100% - 6rem));
+  }
+
+  .feature-container,
+  .feature-section.reverse .feature-container {
+    width: min(61.75rem, calc(100% - 6rem));
+  }
+}
+@media (min-width: 1200px) {
+  .bottom-banner {
+    margin-top: 8.75rem;
+  }
+}
+
+/* Desktop hero: 1920px viewport에서 헤더 아래 540px 높이로 구성합니다. */
+@media (min-width: 1200px) {
+  .hero-section {
+    height: 33.75rem;
+    min-height: 33.75rem;
+    padding: 0;
+  }
+
+  .hero-container {
+    width: min(69.375rem, calc(100% - 3rem));
+    position: relative;
+    height: 100%;
+    min-height: 0;
+    margin-inline: auto;
+    display: block;
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 15rem;
+    left: 0;
+    width: 18.4375rem;
+    height: auto;
+    padding: 0;
+    gap: 1.5rem;
+  }
+
+  .hero-text h1 {
+    width: 18.4375rem;
+    height: 7rem;
+    font-size: 2rem;
+    line-height: 1.4;
+  }
+
+  .hero-image {
+    position: absolute;
+    left: 22.75rem;
+    bottom: 0;
+    flex: none;
+    width: 46.625rem;
+    min-width: 0;
+    height: auto;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .hero-section + .feature-section {
+    display: block;
+    height: 45rem;
+    margin-top: 0;
+    padding: 8.625rem 0 0;
+  }
+
+  .hero-section + .feature-section .feature-container {
+    height: 27.75rem;
+    min-height: 27.75rem;
+    margin: 0 auto;
+  }
+
+  .hero-section + .feature-section .feature-image {
+    flex: 0 0 36.75rem;
+    width: 36.75rem;
+  }
+
+  .hero-section + .feature-section .feature-image img {
+    width: 36.75rem;
+    height: 27.75rem;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+/* Tablet(744–1199px): 히어로와 배너는 중앙, 기능 이미지는 설명 위에 둡니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .navbar .nav-container,
+  .footer-container {
+    width: calc(100% - 3rem);
+  }
+
+  .hero-section {
+    padding: 5.25rem 0 0;
+  }
+
+  .hero-container {
+    gap: 10rem;
+  }
+
+  .hero-text {
+    width: 32rem;
+    max-width: 32rem;
+    height: 8.5rem;
+    flex: 0 0 auto;
+    gap: 1.5rem;
+    align-self: center;
+  }
+
+  .hero-text h1 {
+    width: 32rem;
+    height: 3.5rem;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .hero-text h1 br {
+    display: none;
+  }
+
+  .hero-text .btn-lg {
+    width: 22.3125rem;
+    height: 3.5rem;
+    min-height: 3.5rem;
+    padding: 1rem 7.75rem;
+    gap: 0.625rem;
+    border-radius: 2.5rem;
+  }
+
+  .hero-image,
+  .banner-image {
+    width: min(46.625rem, 100vw);
+    max-width: none;
+  }
+
+  .feature-image {
+    width: calc(100vw - 3rem);
+    max-width: none;
+  }
+
+  .feature-section {
+    padding: 4rem 0;
+  }
+
+  .feature-text h2 {
+    font-size: 2rem;
+  }
+
+  .banner-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .feature-text p,
+  .feature-register .feature-text p {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .badge {
+    font-size: 0.875rem;
+  }
+}
+/* Mobile(375–743px): 헤더 여백 16px, 기능 이미지는 좌우 16px, 배너 이미지는 전체 폭입니다. */
+@media (min-width: 375px) and (max-width: 743px) {
+  .navbar .nav-container,
+  .footer-container {
+    width: calc(100% - 2rem);
+  }
+
+  .hero-section {
+    padding: 2rem 0;
+  }
+
+  .hero-container {
+    width: 100%;
+    gap: 8rem;
+  }
+
+  .hero-text {
+    max-width: calc(100% - 2rem);
+  }
+
+  .hero-text h1 {
+    font-size: 1.625rem;
+  }
+
+  .hero-text .btn-lg {
+    width: 15rem;
+    min-height: 3rem;
+  }
+
+  .hero-image,
+  .banner-image {
+    width: 100vw;
+    max-width: none;
+  }
+
+  .feature-container,
+  .feature-section.reverse .feature-container {
+    width: calc(100% - 2rem);
+  }
+
+  .feature-image {
+    width: calc(100vw - 2rem);
+    max-width: none;
+  }
+
+  .feature-section {
+    padding: 3rem 0;
+  }
+
+  .feature-text h2 {
+    font-size: 2rem;
+  }
+
+  .feature-text p,
+  .feature-register .feature-text p {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .badge {
+    font-size: 0.875rem;
+  }
+
+  .bottom-banner {
+    margin-top: 0;
+    position: relative;
+    height: 33.75rem;
+    min-height: 33.75rem;
+    padding: 0;
+  }
+
+  .banner-container {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .banner-container h2 {
+    width: 14.75rem;
+    height: 5.625rem;
+    position: absolute;
+    top: 7.5625rem;
+    left: 50%;
+    align-self: center;
+    margin-inline: auto;
+    transform: translateX(-50%);
+    font-family: "Pretendard", sans-serif;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .bottom-banner .banner-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    max-width: none;
+    transform: translateX(-50%);
+  }
+}
+/* 세로 배치에서는 텍스트와 이미지의 순서와 정렬을 시안에 맞춥니다. */
+@media (max-width: 1199px) {
+  .hero-text {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    text-align: center;
+  }
+
+  .feature-section .feature-container,
+  .feature-section.reverse .feature-container {
+    flex-direction: column;
+  }
+
+  .feature-text,
+  .feature-register .feature-text {
+    align-self: stretch;
+    text-align: left;
+  }
+
+  .feature-section.reverse .feature-text {
+    align-self: stretch;
+    text-align: right;
+  }
+
+  .feature-section.reverse .feature-text h2 {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .banner-container h2 {
+    align-self: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+/* 기능 소개 제목은 화면 크기에 맞춰 한 줄로 표시합니다. */
+.feature-text h2 {
+  white-space: nowrap;
+}
+
+.feature-text h2 br {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .feature-text h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 744px) and (max-width: 1199px) {
+  .feature-text h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .feature-text h2 {
+    font-size: clamp(1.25rem, 4.3vw, 2rem);
+  }
+}
+/* 검색 기능의 배지, 제목, 설명을 모두 오른쪽 끝에 맞춥니다. */
+.feature-section.reverse .feature-text {
+  text-align: right;
+}
+
+.feature-section.reverse .feature-text > .badge {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.feature-section.reverse .feature-text > h2,
+.feature-section.reverse .feature-text > p {
+  width: 100%;
+  margin-left: 0;
+  text-align: right;
+}
+/* Tablet과 Mobile에서는 구매 설명 묶음 전체를 오른쪽 끝에 붙입니다. */
+@media (max-width: 1199px) {
+  .feature-section.reverse .feature-text {
+    width: fit-content;
+    max-width: 100%;
+    align-self: flex-end;
+  }
+
+  .feature-section.reverse .feature-text > h2,
+  .feature-section.reverse .feature-text > p {
+    width: auto;
+    max-width: 100%;
+    margin-left: 0;
+    text-align: right;
+  }
+}
+/* Tablet 하단 배너 제목의 Figma 크기와 타이포그래피를 적용합니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .banner-container h2 {
+    width: 18.4375rem;
+    height: 7rem;
+    flex: 0 0 7rem;
+    margin-inline: auto;
+    padding: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+}
+/* 하단 배너 이미지와 푸터 사이의 파란 여백을 제거합니다. */
+@media (max-width: 1199px) {
+  .bottom-banner {
+    padding-bottom: 0;
+  }
+}
+/* PC와 Tablet 푸터는 Flexbox 3영역으로 배치해 링크 묶음을 가운데 둡니다. */
+@media (min-width: 744px) {
+  .footer-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-container > .copyright,
+  .footer-container > .footer-links,
+  .footer-container > .social-links {
+    flex: 1 1 0;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+
+  .footer-links a {
+    width: auto;
+  }
+
+  .social-links {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .footer-container {
+    display: grid;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+}
+/* Tablet 푸터 크기와 내부 여백을 디자인 시안에 맞춥니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .footer {
+    width: 100%;
+    height: 10rem;
+    padding: 2rem 1.5rem 6.75rem;
+  }
+
+  .footer-container {
+    width: 100%;
+    height: 100%;
+    gap: 0.625rem;
+  }
+}
+/* Tablet에서 푸터 위 배너 섹션을 지정 높이로 만들고 이미지를 하단에 붙입니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .bottom-banner {
+    display: flex;
+    flex-direction: column;
+    height: 57.9375rem;
+    min-height: 57.9375rem;
+    padding-bottom: 0;
+  }
+
+  .bottom-banner .banner-container {
+    margin-top: auto;
+  }
+}
+/* Tablet 섹션 높이와 간격을 Figma 치수에 맞춥니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    height: 48.1875rem;
+    min-height: 48.1875rem;
+  }
+
+  .hero-section .hero-container {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    justify-content: space-between;
+  }
+
+  .hero-section + .feature-section {
+    margin-top: 1.5rem;
+    border-top: 0;
+  }
+
+  .feature-section {
+    height: 44.25rem;
+    padding: 0;
+  }
+
+  .feature-container,
+  .feature-section.reverse .feature-container {
+    gap: 1.5rem;
+  }
+
+  .feature-section + .feature-section {
+    margin-top: 3.25rem;
+  }
+
+  .feature-register + .bottom-banner {
+    margin-top: 3.5rem;
+  }
+}
+/* Tablet 하단 배너는 제목을 위쪽에 두고 그림을 푸터에 붙입니다. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .bottom-banner {
+    position: relative;
+    display: block;
+    padding-top: 0;
+  }
+
+  .bottom-banner .banner-container {
+    position: static;
+    display: block;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .bottom-banner .banner-container h2 {
+    position: absolute;
+    top: 12.5625rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .bottom-banner .banner-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    max-width: none;
+    transform: translateX(-50%);
+  }
+}
+
+/* Desktop bottom banner spacing from the supplied layout measurements. */
+@media (min-width: 1200px) {
+  .bottom-banner {
+    height: 540px;
+    min-height: 540px;
+    padding: 0;
+  }
+
+  .bottom-banner .banner-container {
+    position: relative;
+    display: block;
+    width: min(69.375rem, calc(100% - 3rem));
+    height: 100%;
+    min-height: 0;
+  }
+
+  .bottom-banner .banner-container h2 {
+    position: absolute;
+    top: 255.5px;
+    left: 0;
+    width: 21.3125rem;
+    height: 112px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bottom-banner .banner-image {
+    position: absolute;
+    left: 25.625rem;
+    bottom: 0;
+    width: 43.75rem;
+    max-width: none;
+    height: 100%;
+  }
+
+  .bottom-banner .banner-image img {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    object-fit: contain;
+    object-position: bottom;
+  }
+}
+
+/* Desktop hero and first feature spacing for the 1920px layout. */
+@media (min-width: 1200px) {
+  .hero-section {
+    height: 540px;
+    min-height: 540px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    position: relative;
+    display: block;
+    width: min(1110px, calc(100% - 48px));
+    height: 100%;
+    min-height: 0;
+    margin-inline: auto;
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 240px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 295px;
+    height: auto;
+    padding: 0;
+  }
+
+  .hero-text h1 {
+    width: 295px;
+    height: 112px;
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.4;
+  }
+
+  .hero-text .btn-lg {
+    width: 295px;
+    height: 56px;
+    min-height: 56px;
+    padding: 16px;
+  }
+
+  .hero-image {
+    position: absolute;
+    left: 364px;
+    bottom: 0;
+    width: 746px;
+    height: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .hero-section + .feature-section {
+    display: block;
+    height: 720px;
+    margin-top: 0;
+    padding: 138px 0 0;
+  }
+
+  .hero-section + .feature-section .feature-container {
+    height: 444px;
+    min-height: 444px;
+    margin: 0 auto;
+  }
+
+  .hero-section + .feature-section .feature-image {
+    flex: 0 0 588px;
+    width: 588px;
+  }
+
+  .hero-section + .feature-section .feature-image img {
+    width: 588px;
+    height: 444px;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+/* Desktop feature typography from the supplied design specs. */
+@media (min-width: 1200px) {
+  .feature-text h2 {
+    width: 100%;
+    max-width: 100%;
+    font-family: "Pretendard", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+    white-space: normal;
+  }
+
+  .feature-text p {
+    height: auto;
+    font-family: "Pretendard", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0;
+    vertical-align: middle;
+  }
+}
+
+/* Keep each feature heading in the requested two-line form at every viewport. */
+.feature-text h2 {
+  white-space: normal;
+}
+
+.feature-text h2 br {
+  display: initial;
+}
+
+/* Use explicit two-line titles and enough room for their 40px text. */
+.feature-text h2 > span {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .feature-container,
+  .feature-section.reverse .feature-container {
+    width: min(69.375rem, calc(100% - 3rem));
+    gap: 3.75rem;
+  }
+
+  .feature-text {
+    flex: 0 0 28.875rem;
+    width: 28.875rem;
+    height: auto;
+  }
+
+  .feature-text p,
+  .feature-register .feature-text p {
+    width: 100%;
+    height: auto;
+    white-space: normal;
+  }
+}
+
+/* Desktop footer height from the current layout spec. */
+@media (min-width: 1200px) {
+  .footer {
+    height: 160px;
+    min-height: 160px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-container {
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .feature-section .feature-image img {
+    height: 444px;
+    min-height: 0;
+  }
+}
+
+/* Feature copy: keep each heading's first phrase on line one and the remainder on line two. */
+.feature-text h2 {
+  white-space: normal;
+}
+
+.feature-text h2 > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.feature-text p,
+.feature-register .feature-text p {
+  white-space: normal;
+}
+
+.hero-text {
+  gap: 32px;
+}
+
+.hero-text h1 > span {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Hero heading typography from the supplied design spec (PC and tablet). */
+@media (min-width: 744px) {
+  .hero-text h1 {
+    font-family: "Pretendard", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    line-height: 140%;
+    letter-spacing: 0;
+    vertical-align: middle;
+  }
+}
+
+/* Keep the hero heading on two lines at tablet widths as in the design. */
+@media (min-width: 744px) and (max-width: 1199px) {
+  .hero-text {
+    height: auto;
+  }
+
+  .hero-text h1 {
+    height: 112px;
+    white-space: normal;
+  }
+
+  .hero-text h1 br {
+    display: inline;
+  }
+}
 

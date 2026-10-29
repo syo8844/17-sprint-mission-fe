@@ -1,0 +1,220 @@
+/* 프로젝트 전반에서 공유하는 색상, 레이아웃, 폰트 변수입니다. */
+/* Pretendard Variable: 기본 프로젝트용 가변 폰트 */
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/pretendard-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ROKAF Sans Bold";
+  src: url("../fonts/rokaf-sans-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ROKAF Sans Medium";
+  src: url("../fonts/rokaf-sans-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ROKAF Slab Serif Bold";
+  src: url("../fonts/rokaf-slab-serif-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ROKAF Slab Serif Medium";
+  src: url("../fonts/rokaf-slab-serif-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard-Thin.otf";
+  src: url("../fonts/Pretendard-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-ExtraLight.otf";
+  src: url("../fonts/Pretendard-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Light.otf";
+  src: url("../fonts/Pretendard-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular.otf";
+  src: url("../fonts/Pretendard-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Medium.otf";
+  src: url("../fonts/Pretendard-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-SemiBold.otf";
+  src: url("../fonts/Pretendard-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Bold.otf";
+  src: url("../fonts/Pretendard-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-ExtraBold.otf";
+  src: url("../fonts/Pretendard-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Black.otf";
+  src: url("../fonts/Pretendard-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Thin.ttf";
+  src: url("../fonts/Pretendard-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-ExtraLight.ttf";
+  src: url("../fonts/Pretendard-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Light.ttf";
+  src: url("../fonts/Pretendard-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular.ttf";
+  src: url("../fonts/Pretendard-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Medium.ttf";
+  src: url("../fonts/Pretendard-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-SemiBold.ttf";
+  src: url("../fonts/Pretendard-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Bold.ttf";
+  src: url("../fonts/Pretendard-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-ExtraBold.ttf";
+  src: url("../fonts/Pretendard-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Black.ttf";
+  src: url("../fonts/Pretendard-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "pretendard-variable.woff2";
+  src: url("../fonts/pretendard-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PretendardVariable.ttf";
+  src: url("../fonts/PretendardVariable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #3692ff;
+  --color-primary-hover: #2677d9;
+  --color-primary-soft: #e6f2ff;
+  --color-text: #1f2937;
+  --color-text-secondary: #374151;
+  --color-text-muted: #4b5563;
+  --color-text-subtle: #9ca3af;
+  --color-border: #f2f4f7;
+  --color-surface: #f3f4f6;
+  --color-white: #fff;
+  --color-hero: #cfe5ff;
+  --color-footer: #111827;
+  --color-footer-text: #e5e7eb;
+  --color-error: #f04452;
+  --color-primary-rgb: 54 146 255;
+  --page-max: 95rem;
+  --page-gutter: 12.5rem;
+  --font-body:
+    "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --font-brand: "ROKAF Sans Bold", sans-serif;
+}

@@ -5,23 +5,16 @@ function getError(form, input) {
   const value = input.value.trim();
 
   if (input.name === "email") {
-    if (!value) return "이메일을 입력해 주세요.";
+    if (!value) return "이메일을 입력해주세요.";
     if (!EMAIL_RE.test(value)) return "잘못된 이메일 형식입니다.";
     if (form.dataset.authForm === "signup" && value.toLowerCase() === USED_EMAIL) {
       return "중복된 이메일입니다.";
     }
-    if (form.dataset.authForm === "login" && input.dataset.credentialsError === "true") {
-      return "이메일을 확인해 주세요.";
-    }
   }
 
   if (input.name === "password") {
-    if (form.dataset.authForm === "login") {
-      if (!value) return "비밀번호를 입력해 주세요.";
-      if (input.dataset.credentialsError === "true") return "비밀번호를 확인해 주세요.";
-    } else if (value.length < 8) {
-      return "비밀번호를 8자 이상 입력해 주세요.";
-    }
+    if (!value) return "비밀번호를 입력해주세요.";
+    if (value.length < 8) return "비밀번호를 8자 이상 입력해주세요.";
   }
 
   if (input.name === "nickname" && !value) {
@@ -49,7 +42,9 @@ document.querySelectorAll(".auth-form").forEach((form) => {
   const signup = form.dataset.authForm === "signup";
 
   function updateSubmitButton() {
-    submitButton.disabled = !inputs.every((input) => input.value.trim().length > 0);
+    submitButton.disabled = !inputs.every((input) => {
+      return input.value.trim().length > 0 && !getError(form, input);
+    });
   }
 
   inputs.forEach((input) => {
@@ -60,7 +55,6 @@ document.querySelectorAll(".auth-form").forEach((form) => {
     });
 
     input.addEventListener("input", () => {
-      input.dataset.credentialsError = "false";
       if (input.dataset.touched === "true") {
         showFieldError(form, input, getError(form, input));
       }
@@ -87,20 +81,7 @@ document.querySelectorAll(".auth-form").forEach((form) => {
 
     if (!valid) return;
 
-    if (!signup) {
-      const correctEmail = form.elements.email.value.trim().toLowerCase() === USED_EMAIL;
-      const correctPassword = form.elements.password.value === "codeit101";
-
-      if (!correctEmail || !correctPassword) {
-        form.elements.email.dataset.credentialsError = "true";
-        form.elements.password.dataset.credentialsError = "true";
-        showFieldError(form, form.elements.email, "이메일을 확인해 주세요.");
-        showFieldError(form, form.elements.password, "비밀번호를 확인해 주세요.");
-        return;
-      }
-    }
-
-    window.location.href = "./items.html";
+    window.location.href = "items.html";
   });
 });
 

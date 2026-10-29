@@ -14,25 +14,6 @@ html {
   font-size: 100%;
 }
 
-/* 프로젝트 공통 색상 팔레트 */
-:root {
-  --color-primary: #3692ff;
-  --color-primary-hover: #2677d9;
-  --color-primary-soft: #e6f2ff;
-  --color-text: #1f2937;
-  --color-text-secondary: #374151;
-  --color-text-muted: #4b5563;
-  --color-text-subtle: #9ca3af;
-  --color-border: #f2f4f7;
-  --color-surface: #f3f4f6;
-  --color-white: #fff;
-  --color-hero: #cfe5ff;
-  --color-footer: #111827;
-  --color-footer-text: #e5e7eb;
-  --color-error: #f04452;
-  --color-primary-rgb: 54 146 255;
-}
-
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

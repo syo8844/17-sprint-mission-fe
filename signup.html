@@ -2,16 +2,25 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <!-- Google Analytics 4: Panda Market Mission 2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RGM1Y92DFH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-RGM1Y92DFH');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입 | 판다마켓</title>
+    <link rel="stylesheet" href="./css/variables.css" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/auth.css" />
     <script src="./js/auth.js" defer></script>
   </head>
   <body class="auth-page signup-page">
     <main class="auth-card" aria-labelledby="signup-title">
-      <a class="auth-logo" href="./index.html" aria-label="판다마켓 홈">
-        <img src="./images/logo.png" alt="" />
+      <a class="auth-logo" href="index.html" aria-label="판다마켓 홈">
+        <img src="./images/panda-face.svg" alt="" />
         <span>판다마켓</span>
       </a>
       <h1 class="visually-hidden" id="signup-title">회원가입</h1>
@@ -96,26 +105,22 @@
         <button class="submit-button" type="submit" disabled>회원가입</button>
       </form>
 
-      <section class="social-login" aria-label="간편 회원가입">
-        <span>간편 로그인하기</span>
-        <div class="social-buttons" aria-label="간편 회원가입 제공자">
-          <a
-            class="social-button"
-            href="https://www.google.com/"
-            aria-label="Google"
-            ><img src="./images/google-login.png" alt=""
-          /></a>
-          <a
-            class="social-button"
-            href="https://www.kakaocorp.com/page/"
-            aria-label="카카오"
-            ><img src="./images/kakao-login.png" alt=""
-          /></a>
+      <section class="social-login" aria-label="간편 로그인">
+        <div class="social-login-inner">
+          <span>간편 로그인하기</span>
+          <div class="social-buttons" aria-label="간편 로그인 제공자">
+            <a class="social-button" href="https://www.google.com/" aria-label="Google">
+              <img src="./images/google-login.png" alt="" />
+            </a>
+            <a class="social-button" href="https://www.kakaocorp.com/page/" aria-label="카카오">
+              <img src="./images/kakao-login.png" alt="" />
+            </a>
+          </div>
         </div>
       </section>
 
       <p class="auth-switch">
-        이미 회원이신가요? <a href="./login.html">로그인</a>
+        이미 회원이신가요? <a href="login.html">로그인</a>
       </p>
     </main>
   </body>
