@@ -54,7 +54,7 @@ export function getArticle(articleId) {
 }
 
 // POST /articles title, content, image를 본문에 담아 게시글을 생성합니다.
-export function createArticle({ title, content, image = null }) {
+export function createArticle({ title, content, image }) {
   return requestArticle(
     "/articles",
     {

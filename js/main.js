@@ -116,7 +116,7 @@ window.runArticleCrudDemo = async function runArticleCrudDemo() {
     const created = await createArticle({
       title: "CRUD API 확인용 게시글",
       content: "확인 후 삭제되는 테스트 게시글입니다.",
-      image: null,
+      image: "https://example.com/mission3-crud-test.png",
     });
     articleId = getCreatedId(created, "article");
     console.log("생성한 Article:", created);
@@ -151,7 +151,7 @@ window.runProductCrudDemo = async function runProductCrudDemo() {
   try {
     // POST: 명세의 상품 필드로 테스트 상품을 생성합니다.
     const created = await createProduct({
-      name: "CRUD API 확인용 상품",
+      name: "CRUD 확인 상품",
       description: "확인 후 삭제되는 테스트 상품입니다.",
       price: 1000,
       tags: ["test"],
@@ -164,7 +164,7 @@ window.runProductCrudDemo = async function runProductCrudDemo() {
     // PATCH: 상품명을 수정하고 결과를 확인합니다.
     console.log(
       "수정한 Product:",
-      await patchProduct(productId, { name: "수정된 CRUD API 확인용 상품" }),
+      await patchProduct(productId, { name: "수정된 CRUD 확인 상품" }),
     );
   } catch (error) {
     // 생성·조회·수정 단계 중 발생한 오류를 기록합니다.
