@@ -210,7 +210,7 @@ button, select { cursor: pointer; }
   .section { margin-bottom: 48px; }
   .section-heading { margin-bottom: 16px; }
   .section-heading h2 { font-size: 21px; }
-  .all-heading { display: grid; grid-template-columns: max-content 133px minmax(42px, 1fr); grid-template-areas: "title register ." "search search sort"; align-items: center; column-gap: 0; row-gap: 14px; }
+  .all-heading { display: grid; grid-template-columns: max-content 133px minmax(42px, 1fr); grid-template-areas: "title title title" "register register ." "search search sort"; align-items: center; column-gap: 0; row-gap: 14px; }
   .all-heading h1 { grid-area: title; }
   .catalog-controls, .catalog-actions { display: contents; }
   .search-form { grid-area: search; }
