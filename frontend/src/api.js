@@ -1,7 +1,16 @@
 const configuredApiBaseUrl = (import.meta.env.VITE_API_BASE_URL ?? "").trim();
+const configuredUrlIsFrontend = (() => {
+  if (!import.meta.env.DEV || !configuredApiBaseUrl) return false;
+  try {
+    return new URL(configuredApiBaseUrl, window.location.origin).origin === window.location.origin;
+  } catch {
+    return false;
+  }
+})();
 
 export const API_BASE_URL = (
-  configuredApiBaseUrl || (import.meta.env.DEV ? "http://localhost:3001" : "")
+  (configuredApiBaseUrl && !configuredUrlIsFrontend ? configuredApiBaseUrl : "")
+  || (import.meta.env.DEV ? "http://localhost:3001" : "")
 ).replace(/\/+$/, "");
 
 export async function parseApiResponse(response, fallbackMessage) {
