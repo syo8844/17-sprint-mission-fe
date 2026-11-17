@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/+$/, "");
+import { API_BASE_URL, parseApiResponse } from "../api.js";
 
 export function useProducts({ page, pageSize, keyword = "", orderBy = "recent" }) {
   const [products, setProducts] = useState([]);
@@ -24,11 +23,7 @@ export function useProducts({ page, pageSize, keyword = "", orderBy = "recent" }
         const response = await fetch(`${API_BASE_URL}/api/products?${params}`, {
           signal: controller.signal,
         });
-        if (!response.ok) {
-          const details = await response.json().catch(() => null);
-          throw new Error(details?.message ?? `상품을 불러오지 못했습니다. (${response.status})`);
-        }
-        const result = await response.json();
+        const result = await parseApiResponse(response, "상품을 불러오지 못했습니다.");
         setProducts(result.list);
         setTotalCount(result.totalCount);
       } catch (requestError) {

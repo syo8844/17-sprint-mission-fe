@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL, parseApiResponse } from "../api.js";
 import { useRegistrationValidation } from "../hooks/useRegistrationValidation.js";
-
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/+$/, "");
 const initialValues = { name: "", description: "", price: "", tags: [] };
 const controlBackground = { backgroundColor: "var(--cool-gray-100)" };
 
@@ -62,8 +61,7 @@ export function RegistrationPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...values, price: Number(values.price.replaceAll(",", "")) }),
       });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.message || "상품을 등록하지 못했습니다.");
+      const result = await parseApiResponse(response, "상품을 등록하지 못했습니다.");
       navigate(`/items/${result.id}`);
     } catch (error) {
       setRequestError(error.message || "상품을 등록하지 못했습니다.");
